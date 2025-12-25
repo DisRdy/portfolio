@@ -75,3 +75,8 @@ Route::middleware('auth')->group(function () {
         return redirect('/');
     })->name('logout');
 });
+
+Route::get('/git-test', function () {
+    return 'GIT DEPLOY OK 🚀';
+});
+
