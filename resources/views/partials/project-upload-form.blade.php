@@ -20,14 +20,18 @@
         <label class="form-group-label">Judul Project</label>
         <input type="text" name="title" value="{{ old('title', $isEditing ? $editingProject->title : '') }}"
             placeholder="Masukkan judul project" class="form-input">
-        @error('title') <span class="form-error">{{ $message }}</span> @enderror
+        @if($show)
+            @error('title') <span class="form-error">{{ $message }}</span> @enderror
+        @endif
     </div>
 
     <div>
         <label class="form-group-label">Deskripsi</label>
         <textarea name="description" placeholder="Deskripsi singkat project (opsional)"
             class="form-textarea">{{ old('description', $isEditing ? $editingProject->description : '') }}</textarea>
-        @error('description') <span class="form-error">{{ $message }}</span> @enderror
+        @if($show)
+            @error('description') <span class="form-error">{{ $message }}</span> @enderror
+        @endif
     </div>
 
     <div>
@@ -44,14 +48,18 @@
             <option value="tutorial" {{ $currentCategory == 'tutorial' ? 'selected' : '' }}>Tutorial</option>
             <option value="certificate" {{ $currentCategory == 'certificate' ? 'selected' : '' }}>Sertifikat</option>
         </select>
-        @error('category') <span class="form-error">{{ $message }}</span> @enderror
+        @if($show)
+            @error('category') <span class="form-error">{{ $message }}</span> @enderror
+        @endif
     </div>
 
     @if(!$isEditing)
         <div style="margin-bottom: 20px;">
-            <label class="form-group-label">File (Max 2MB)</label>
+            <label class="form-group-label">File (Max 10MB)</label>
             <input type="file" name="file" class="form-input">
-            @error('file') <span class="form-error">{{ $message }}</span> @enderror
+            @if($show)
+                @error('file') <span class="form-error">{{ $message }}</span> @enderror
+            @endif
         </div>
     @else
         {{-- FILE LAMA --}}
@@ -72,7 +80,9 @@
             <small style="font-size: 12px; color: #777;">
                 Kosongkan jika tidak ingin mengganti file
             </small>
-            @error('file') <span class="form-error">{{ $message }}</span> @enderror
+            @if($show)
+                @error('file') <span class="form-error">{{ $message }}</span> @enderror
+            @endif
         </div>
     @endif
 
