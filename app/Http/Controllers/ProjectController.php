@@ -52,32 +52,52 @@ class ProjectController extends Controller
         return view('dashboard', ['projects' => $projects, 'editingProject' => $project]);
     }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1000',
-            'category' => 'required|in:design,pdf,cybersecurity,tutorial,certificate',
-        ]);
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string|max:1000',
+        'category' => 'required|in:design,pdf,cybersecurity,tutorial,certificate',
+        'file' => 'nullable|file|max:10240', // file OPTIONAL saat edit
+    ]);
 
-        try {
-            $project = Project::findOrFail($id);
+    try {
+        $project = Project::findOrFail($id);
 
-            if ($project->user_id !== Auth::id()) {
-                return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki izin untuk mengedit project ini.');
+        if ($project->user_id !== Auth::id()) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Anda tidak memiliki izin untuk mengedit project ini.');
+        }
+
+        // Jika user upload file baru
+        if ($request->hasFile('file')) {
+            // hapus file lama
+            if (Storage::disk('public')->exists($project->file_path)) {
+                Storage::disk('public')->delete($project->file_path);
             }
 
-            $project->update([
-                'title' => $request->title,
-                'description' => $request->description,
-                'category' => $request->category,
-            ]);
+            // simpan file baru
+            $file = $request->file('file');
+            $filePath = $file->store('projects/' . $request->category, 'public');
 
-            return redirect()->route('dashboard')->with('success', 'Project berhasil diperbarui!');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Gagal memperbarui project: ' . $e->getMessage());
+            $project->file_path = $filePath;
+            $project->original_filename = $file->getClientOriginalName();
+            $project->file_size = $file->getSize();
         }
+
+        // update data lainnya
+        $project->title = $request->title;
+        $project->description = $request->description;
+        $project->category = $request->category;
+        $project->save();
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Project berhasil diperbarui!');
+    } catch (\Exception $e) {
+        return redirect()->back()
+            ->with('error', 'Gagal memperbarui project: ' . $e->getMessage());
     }
+}
 
     public function destroy($id)
     {

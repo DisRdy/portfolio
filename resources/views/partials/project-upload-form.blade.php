@@ -54,10 +54,28 @@
             @error('file') <span class="form-error">{{ $message }}</span> @enderror
         </div>
     @else
-        <div class="alert alert-info" style="margin-bottom: 20px;">
-            <small>Cross check bang</small>
+        {{-- FILE LAMA --}}
+        <div style="margin-bottom: 15px;">
+            <label class="form-group-label">File Saat Ini</label>
+            <p style="font-size: 14px;">
+                <strong>{{ $editingProject->original_filename }}</strong><br>
+                <small>
+                    {{ number_format($editingProject->file_size / 1024, 2) }} KB
+                </small>
+            </p>
+        </div>
+
+        {{-- FILE BARU (OPSIONAL) --}}
+        <div style="margin-bottom: 20px;">
+            <label class="form-group-label">Ganti File (Opsional)</label>
+            <input type="file" name="file" class="form-input">
+            <small style="font-size: 12px; color: #777;">
+                Kosongkan jika tidak ingin mengganti file
+            </small>
+            @error('file') <span class="form-error">{{ $message }}</span> @enderror
         </div>
     @endif
+
 
     <div style="display: flex; gap: 10px;">
         <button type="submit" class="btn">
