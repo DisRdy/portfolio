@@ -60,7 +60,7 @@
             <p style="font-size: 14px;">
                 <strong>{{ $editingProject->original_filename }}</strong><br>
                 <small>
-                    {{ number_format($editingProject->file_size / 5024, 2) }} KB
+                    {{ number_format($editingProject->file_size / 1024, 2) }} KB
                 </small>
             </p>
         </div>
