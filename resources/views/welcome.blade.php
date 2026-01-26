@@ -14,7 +14,6 @@
             <p class="brand-ts">Hi, Welcome to my portfolio</p> 
     </header>
 
-
     <div class="container">
         <section>
             <h2>Me? <span class="brand-ts-2xl">Disna Radita</span></h2> 
