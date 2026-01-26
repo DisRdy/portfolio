@@ -72,3 +72,20 @@
 </body>
 
 </html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUUU</title>
+</head>
+<body>
+    <div class="container">
+        <section class="auth-wrapper">
+            <h2>Cari Apa Bang?</h2>
+    </div>
+
+    
+</body>
+</html>
