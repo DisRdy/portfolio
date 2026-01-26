@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
 
 <body>
@@ -19,10 +19,10 @@
                 <div class="dashboard-header-top">
                     <div class="dashboard-title">
                         <h1>Dashboard</h1>
+                        <a href="{{ route('logout') }}" class="btn btn-logout">
+                            Logout
+                        </a>
                     </div>
-                    <a href="{{ route('logout') }}" class="btn btn-logout">
-                        Logout
-                    </a>
                 </div>
 
                 <hr class="divider">
@@ -54,9 +54,9 @@
                             $groupedProjects = $projects->groupBy('category');
                         @endphp
 
-                        @foreach(['design' => 'Design', 'pdf' => 'Dokumentasi', 'cybersecurity' => 'Cybersecurity', 'tutorial' => 'Tutorial IT', 'certificate' => 'Sertifikat'] as $key => $label)
+                        @foreach(['design' => 'Design', 'pdf' => 'Dokumentasi', 'tutorial' => 'Tutorial IT', 'certificate' => 'Sertifikat'] as $key => $label)
                             @if($groupedProjects->has($key))
-                                <div style="margin-bottom: 40px;">
+                                <div>
                                     <h4 class="category-section-title">{{ $label }}</h4>
                                     <div class="project-list">
                                         @foreach($groupedProjects[$key] as $project)
@@ -70,25 +70,20 @@
                                                         {{ $project->original_filename }}
                                                         ({{ number_format($project->file_size / 1024, 2) }} KB)
                                                     </p>
-                                                </div>
-                                                <div class="project-item-actions">
-                                                    <a href="{{ route('project.download', $project->id) }}" class="btn-download">
-                                                        Download
-                                                    </a>
-
-                                                    <a href="{{ route('projects.edit', $project->id) }}" class="btn-edit"
-                                                        style="display: inline-block; padding: 6px 12px; background-color: #ffc107; color: #000; text-decoration: none; border-radius: 4px; font-size: 14px; margin-right: 5px;">
-                                                        Edit
-                                                    </a>
-
-                                                    <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
-                                                        class="delete-form-trigger" style="display:inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-delete">
-                                                            Hapus
-                                                        </button>
-                                                    </form>
+                                                    <div class="project-item-actions">
+                                                        <a href="{{ route('projects.edit', $project->id) }}" class="btn-edit">
+                                                            Edit
+                                                        </a>
+    
+                                                        <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
+                                                            class="delete-form-trigger">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn-delete">
+                                                                Hapus
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -105,18 +100,18 @@
     </div>
 
     <!-- Confirmation Modal -->
-    <div id="confirmation-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-content" style="max-width: 400px; text-align: center;">
-            <div class="modal-header" style="justify-content: center; border-bottom: none;">
-                <h2 style="color: var(--kof-red);">Konfirmasi Hapus</h2>
+    <div id="confirmation-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Konfirmasi Hapus</h2>
             </div>
-            <p style="margin-bottom: 20px;">Apakah Anda yakin ingin menghapus project ini?</p>
-            <div style="display: flex; justify-content: center; gap: 10px;">
-                <button id="cancel-delete" class="btn-secondary" style="padding: 10px 20px;">Batal</button>
-                <form id="delete-form-confirm" method="POST" style="display: inline;">
+            <p>Apakah Anda yakin ingin menghapus project ini?</p>
+            <div>
+                <button id="cancel-delete" class="btn-secondary">Batal</button>
+                <form id="delete-form-confirm" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn-delete" style="padding: 10px 20px;">Ya, Hapus</button>
+                    <button type="submit" class="btn-delete">Ya, Hapus</button>
                 </form>
             </div>
         </div>
@@ -125,7 +120,7 @@
 
 
     <footer>
-        <p>&copy; 2025 Portofolio Saya. Semua hak dilindungi.</p>
+        <p>&copy; 2025 Dr</p>
     </footer>
 </body>
 

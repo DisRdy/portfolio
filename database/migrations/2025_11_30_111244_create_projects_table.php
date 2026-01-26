@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->enum('category', ['design', 'pdf', 'cybersecurity', 'tutorial']);
+            $table->enum('category', ['design', 'pdf', 'tutorial']);
             $table->string('file_path');
             $table->string('original_filename');
             $table->integer('file_size');

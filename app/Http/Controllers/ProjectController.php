@@ -14,7 +14,7 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
-            'category' => 'required|in:design,pdf,cybersecurity,tutorial,certificate',
+            'category' => 'required|in:design,pdf,tutorial,certificate',
             'file' => 'required|file|max:10240', // 10MB max
         ]);
 
@@ -57,7 +57,7 @@ public function update(Request $request, $id)
     $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'nullable|string|max:1000',
-        'category' => 'required|in:design,pdf,cybersecurity,tutorial,certificate',
+        'category' => 'required|in:design,pdf,tutorial,certificate',
         'file' => 'nullable|file|max:10240', // file OPTIONAL saat edit
     ]);
 

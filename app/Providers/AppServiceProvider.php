@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Providers;
+ namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\URL;
+ use Illuminate\Support\ServiceProvider;
+ use Illuminate\Support\Facades\URL;
 
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
+ class AppServiceProvider extends ServiceProvider
+ {
 
-    /**
-     * Bootstrap any application services.
-     */
+     public function register(): void
+     {
+        
+     }
+
     public function boot(): void
     {
-        URL::forceScheme('https');
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
+
 }

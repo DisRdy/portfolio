@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyek - Portofolio</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Project</title>
+    @vite(['resources/js/app.js'])
 </head>
 
 <body>
     <x-navbar />
 
     <header>
-        <h1>My Collection</h1>
+        <p class="brand-ts">My Collection</p>
     </header>
 
     <div class="container">
@@ -32,10 +32,6 @@
                 <a href="{{ route('projects', ['category' => 'pdf']) }}" @if($selectedCategory === 'pdf') class="active"
                 @endif>
                     Dokumentasi
-                </a>
-                <a href="{{ route('projects', ['category' => 'cybersecurity']) }}"
-                    @if($selectedCategory === 'cybersecurity') class="active" @endif>
-                    Cybersecurity
                 </a>
                 <a href="{{ route('projects', ['category' => 'tutorial']) }}" @if($selectedCategory === 'tutorial')
                 class="active" @endif>
@@ -64,12 +60,11 @@
             @else
                 @if($selectedCategory)
                     <!-- Display Single Category -->
-                    <div style="margin-bottom: 50px;">
+                    <div>
                         @php
                             $categoryLabels = [
                                 'design' => 'Design',
                                 'pdf' => 'Dokumentasi',
-                                'cybersecurity' => 'Cybersecurity',
                                 'tutorial' => 'Tutorial IT',
                                 'certificate' => 'Sertifikat'
                             ];
@@ -110,9 +105,9 @@
                     </div>
                 @else
                     <!-- Display All Categories -->
-                    @foreach(['design' => 'Design', 'pdf' => 'Dokumentasi', 'cybersecurity' => 'Cybersecurity', 'tutorial' => 'Tutorial IT', 'certificate' => 'Sertifikat'] as $key => $label)
+                    @foreach(['design' => 'Design', 'pdf' => 'Dokumentasi','tutorial' => 'Tutorial IT', 'certificate' => 'Sertifikat'] as $key => $label)
                         @if($groupedProjects->has($key))
-                            <div style="margin-bottom: 50px;">
+                            <div>
                                 <h3 class="category-title">{{ $label }}</h3>
                                 <p class="category-count">Total: <strong>{{ $groupedProjects[$key]->count() }}</strong></p>
                                 <div class="grid-auto-lg">
@@ -154,7 +149,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Portofolio Disna Radita. Semua hak dilindungi.</p>
+        <p>&copy; 2025 Dr</p>
     </footer>
 </body>
 

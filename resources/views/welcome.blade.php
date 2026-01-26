@@ -4,43 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disna Radita</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Dr</title>
+    @vite(['resources/js/app.js'])
 </head>
 
 <body>
     <x-navbar />
     <header>
-        <h1>My Self</h1>
+            <p class="brand-ts">Hi, Welcome to my portfolio</p> 
     </header>
 
 
     <div class="container">
         <section>
-            <h2>About Me</h2>
-            <p>
-                My name is Disna Radita, but you can call me Dis, when we meet. I am currently studying at INSTIKI,
-                majoring in Informatics Engineering, and my dream is to become a Evil.<br>
-                I am currently based in Denpasar, Bali.
-            </p>
-            <p> I have experience building web applications using Laravel and PHP. I am also expanding my knowledge in
-                cybersecurity, especially in Web3 and penetration testing.</p>
+            <h2>Me? <span class="brand-ts-2xl">Disna Radita</span></h2> 
+            <p>My background is in Laravel, with growing focus on penetration testing, and Web3.<br>
+            I have experience building web applications with Laravel. Now I'm also expanding my knowledge in Web3.</p>
         </section>
 
         <section>
             <h2>Technical Skills</h2>
             <div class="skills-list">
                 <div class="skill-item">
-                    <strong>404 - Not Found</strong>
-                    <p>Someting error</p>
+                    <strong>None</strong>
+                    <p>Huftssss</p>
                 </div>
                 <div class="skill-item">
-                    <strong>404 - Not Found</strong>
-                    <p>Someting error</p>
+                    <strong>None</strong>
+                    <p>Huftssss</p>
                 </div>
                 <div class="skill-item">
-                    <strong>404 - Not Found</strong>
-                    <p>Someting error</p>
+                    <strong>None</strong>
+                    <p>Huftssss</p>
                 </div>
             </div>
         </section>
@@ -85,7 +80,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Portofolio Saya. Semua hak dilindungi.</p>
+        <p>&copy; 2025 Dr</p>
     </footer>
 </body>
 

@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Komentar - Portofolio</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Comments</title>
+    @vite(['resources/js/app.js'])
 </head>
 
 <body>
     <x-navbar />
 
     <header>
-        <h1>Komentar & Pesan</h1>
+        <p class="brand-ts">Komentar & Pesan</p>
     </header>
 
     @include('partials.toast')
@@ -23,11 +23,7 @@
                 <div class="comment-form-wrapper">
                     <!-- Form Komentar -->
                     <div class="comment-form-section">
-                        <div class="comment-limit-info"
-                            style="margin-bottom: 20px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 4px; text-align: center;">
-                            <span style="color: var(--kof-gold);">Sisa Kuota Komentar Anda: <strong>{{ $remaining }} /
-                                    {{ $maxAttempts }}</strong></span>
-                        </div>
+                        <div class="comment-limit-info"></div>
                         <h3>Tulis Komentar</h3>
 
                         <form method="POST" action="{{ route('comments.store') }}">
@@ -41,7 +37,7 @@
                                 @enderror
                             </div>
 
-                            <div style="margin-bottom: 20px;">
+                            <div>
                                 <label for="comment" class="form-group-label">Komentar Anda</label>
                                 <textarea id="comment" name="comment" required maxlength="1000" rows="5"
                                     placeholder="Bagikan pemikiran, saran, atau pertanyaan Anda..."
@@ -59,7 +55,7 @@
                     </div>
 
                     <!-- Daftar Komentar -->
-                    <div style="margin-top: 30px;">
+                    <div>
                         <h3 class="comment-list-title">Daftar Komentar ({{ $comments->count() }})</h3>
 
                         @if ($comments->count() > 0)
@@ -95,7 +91,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Portofolio Saya. Semua hak dilindungi.</p>
+        <p>&copy; 2025 Dr</p>
     </footer>
 </body>
 

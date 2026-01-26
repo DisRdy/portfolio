@@ -54,7 +54,7 @@
     </div>
 
     @if(!$isEditing)
-        <div style="margin-bottom: 20px;">
+        <div>
             <label class="form-group-label">File (Max 10MB)</label>
             <input type="file" name="file" class="form-input">
             @if($show)
@@ -63,9 +63,9 @@
         </div>
     @else
         {{-- FILE LAMA --}}
-        <div style="margin-bottom: 15px;">
+        <div>
             <label class="form-group-label">File Saat Ini</label>
-            <p style="font-size: 14px;">
+            <p>
                 <strong>{{ $editingProject->original_filename }}</strong><br>
                 <small>
                     {{ number_format($editingProject->file_size / 1024, 2) }} KB
@@ -74,10 +74,10 @@
         </div>
 
         {{-- FILE BARU (OPSIONAL) --}}
-        <div style="margin-bottom: 20px;">
+        <div>
             <label class="form-group-label">Ganti File (Opsional)</label>
             <input type="file" name="file" class="form-input">
-            <small style="font-size: 12px; color: #777;">
+            <small>
                 Kosongkan jika tidak ingin mengganti file
             </small>
             @if($show)
@@ -87,13 +87,12 @@
     @endif
 
 
-    <div style="display: flex; gap: 10px;">
+    <div>
         <button type="submit" class="btn">
             {{ $isEditing ? 'Simpan' : 'Upload Project' }}
         </button>
         @if($isEditing)
-            <a href="{{ route('dashboard') }}" class="btn-secondary"
-                style="background: #ccc; text-decoration: none; padding: 10px 20px; border-radius: 4px; color: black;">Batal</a>
+            <a href="{{ route('dashboard') }}" class="btn-secondary">Batal</a>
         @endif
     </div>
 </form>
