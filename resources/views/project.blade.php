@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <x-navbar />
+    <x-public-navbar />
 
     <header>
         <p class="brand-ts">My Collection</p>
@@ -105,7 +105,7 @@
                     </div>
                 @else
                     <!-- Display All Categories -->
-                    @foreach(['design' => 'Design', 'pdf' => 'Dokumentasi','tutorial' => 'Tutorial IT', 'certificate' => 'Sertifikat'] as $key => $label)
+                    @foreach(['design' => 'Design', 'pdf' => 'Dokumentasi', 'tutorial' => 'Tutorial IT', 'certificate' => 'Sertifikat'] as $key => $label)
                         @if($groupedProjects->has($key))
                             <div>
                                 <h3 class="category-title">{{ $label }}</h3>

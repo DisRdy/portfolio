@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <x-navbar />
+    <x-dashboard-navbar />
 
     @include('partials.toast')
 
@@ -19,9 +19,7 @@
                 <div class="dashboard-header-top">
                     <div class="dashboard-title">
                         <h1>Dashboard</h1>
-                        <a href="{{ route('logout') }}" class="btn btn-logout">
-                            Logout
-                        </a>
+
                     </div>
                 </div>
 
@@ -74,7 +72,7 @@
                                                         <a href="{{ route('projects.edit', $project->id) }}" class="btn-edit">
                                                             Edit
                                                         </a>
-    
+
                                                         <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
                                                             class="delete-form-trigger">
                                                             @csrf

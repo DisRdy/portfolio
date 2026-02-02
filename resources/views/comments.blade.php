@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comments</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <x-navbar />
+    <x-public-navbar />
 
     <header>
-        <p class="brand-ts">Komentar & Pesan</p>
+        <p class="brand-ts">Comments & suggestion</p>
     </header>
 
     @include('partials.toast')

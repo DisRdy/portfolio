@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
-    
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body>
-    <x-navbar />
+    <x-public-navbar />
     <header>
-            <p class="brand-ts">Hi, Welcome to my portfolio</p> 
+        <p class="brand-ts">Hi, Welcome to my portfolio</p>
     </header>
 
     <div class="container">
         <section>
-            <h2>Me? <span class="brand-ts-2xl">Disna Radita</span></h2> 
+            <h2>Me? <span class="brand-ts-2xl">Disna Radita</span></h2>
             <p>My background is in Laravel, with growing focus on penetration testing, and Web3.<br>
-            I have experience building web applications with Laravel. Now I'm also expanding my knowledge in Web3.</p>
+                I have experience building web applications with Laravel. Now I'm also expanding my knowledge in Web3.
+            </p>
         </section>
 
         <section>

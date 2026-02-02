@@ -68,15 +68,21 @@ Route::middleware('auth')->group(function () {
     Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
-    Route::get('/logout', function () {
+    Route::post('/logout', function () {
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();
         return redirect('/');
     })->name('logout');
+    // Blog Management Routes
+    Route::resource('/dashboard/blogs', \App\Http\Controllers\Dashboard\BlogController::class, ['as' => 'dashboard']);
 });
 
 Route::get('/git-test', function () {
     return 'GIT DEPLOY OK 🚀';
 });
 
+
+// Public Blog Routes
+Route::get('/blog', [\App\Http\Controllers\PublicBlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [\App\Http\Controllers\PublicBlogController::class, 'show'])->name('blog.show');
