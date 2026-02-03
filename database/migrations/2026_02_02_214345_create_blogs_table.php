@@ -10,17 +10,19 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->string('subtitle')->nullable();
-            $table->string('slug')->unique();
-            $table->text('content');
-            $table->enum('status', ['draft', 'published'])->default('draft');
-            $table->timestamp('published_at')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('blogs')) {
+            Schema::create('blogs', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+                $table->string('title');
+                $table->string('subtitle')->nullable();
+                $table->string('slug')->unique();
+                $table->text('content');
+                $table->enum('status', ['draft', 'published'])->default('draft');
+                $table->timestamp('published_at')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

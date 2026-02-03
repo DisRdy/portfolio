@@ -10,9 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->string('subtitle')->nullable()->after('title');
-        });
+        if (!Schema::hasColumn('blogs', 'subtitle')) {
+            Schema::table('blogs', function (Blueprint $table) {
+                $table->string('subtitle')->nullable()->after('title');
+            });
+        }
     }
 
     /**
