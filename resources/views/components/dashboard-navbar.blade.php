@@ -3,7 +3,7 @@
         <!-- Logo / Brand -->
         <div class="navbar-brand">
             <a href="{{ route('dashboard') }}" class="brand-link">
-                <span class="brand-text">Dr Dashboard</span>
+                <span class="brand-text">Dr</span>
             </a>
         </div>
 
